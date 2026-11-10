@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="tool">
+  <meta name="design-style" content="sticker">
+  <title>國小五年級英語科篩選測驗（110~115年）線上互動閱讀測驗</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* Page and surfaces - Sticker Theme */
+      --background: #fef7ff;
+      --surface-container-low: #ffffff;
+      --surface-container: #f8eef8;
+      --surface-container-high: #f2e8f2;
+
+      /* Ink */
+      --on-surface: #2e1a28;
+      --on-surface-variant: #604868;
+
+      /* Rules */
+      --outline: #907898;
+      --outline-variant: #dcc8e0;
+
+      /* Accents */
+      --primary: #c2207f;
+      --on-primary: #ffffff;
+      --primary-container: #f080c0;
+      --on-primary-container: #2e1a28;
+      --secondary: #7c52aa;
+      --tertiary: #0096cc;
+      --error: #c53030;
+      --on-error: #ffffff;
+
+      /* Data series */
+      --data-1: #c2207f;
+      --data-2: #7c52aa;
+      --data-3: #0096cc;
+      --data-4: #d96a00;
+      --data-context: #c8b8d0;
+
+      /* Semantic additions */
+      --positive: #1b873f;
+      --positive-bg: #eaf8ee;
+      --positive-border: #8fd4a5;
+      --warning: #d97706;
+      --warning-bg: #fef3c7;
+      --focus: #c2207f;
+
+      /* Fonts */
+      --font-headline: 'DM Sans', 'Noto Sans TC', sans-serif;
+      --font-body: 'DM Sans', 'Noto Sans TC', sans-serif;
+      --font-label: 'DM Sans', 'Noto Sans TC', sans-serif;
+
+      /* Shapes */
+      --rounded: 1rem;
+      --rounded-lg: 1.5rem;
+      --rounded-full: 9999px;
+
+      /* Shadows & transitions */
+      --shadow-pink: 0 4px 16px rgba(224, 64, 160, 0.18);
+      --shadow-pink-deep: 0 8px 24px rgba(224, 64, 160, 0.28);
+      --shadow-grape: 0 4px 16px rgba(124, 82, 170, 0.18);
+      --shadow-sky: 0 4px 16px rgba(0, 150, 204, 0.18);
+      --lift: translateY(-3px);
+      --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --dur-micro: 120ms;
+      --dur-short: 200ms;
+      --dur-long: 380ms;
+
+      /* Spacing scale */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.25rem;
+      --space-2xl: 3.5rem;
+
+      /* Tool Typography scale */
+      --display-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem);
+      --headline-size: clamp(1.2rem, 1.05rem + 0.6vw, 1.45rem);
+      --subhead-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+      --body-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
+      --label-size: 0.8rem;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      position: static !important;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      letter-spacing: 0;
+    }
+
+    .page-grid {
+      display: grid;
+      gap: var(--space-lg);
+      padding: var(--space-md) var(--space-lg) var(--space-2xl);
+      max-width: 1100px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .page-grid * {
+      min-width: 0;
+    }
+
+    /* Cards */
+    .sticker-card {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded-lg);
+      box-shadow: var(--shadow-pink);
+      padding: var(--space-lg);
+      position: relative;
+      transition: transform var(--dur-short) var(--ease-bounce), box-shadow var(--dur-short) var(--ease-out);
+    }
+    .sticker-card.grape-accent {
+      box-shadow: var(--shadow-grape);
+    }
+    .sticker-card.sky-accent {
+      box-shadow: var(--shadow-sky);
+    }
+
+    /* Top Banner / Hero */
+    .hero-banner {
+      background: linear-gradient(135deg, #ffffff 0%, #fff0f7 100%);
+      border: 2px solid var(--outline-variant);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg) var(--space-xl);
+      box-shadow: var(--shadow-pink);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .hero-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: 0.25rem 0.85rem;
+      border-radius: var(--rounded-full);
+      font-size: var(--label-size);
+      font-weight: 700;
+      background: var(--primary-container);
+      color: var(--on-surface);
+    }
+    .pill-badge.secondary {
+      background: #e9dcfa;
+      color: var(--secondary);
+    }
+    .pill-badge.sky {
+      background: #d6f4ff;
+      color: #00688f;
+    }
+    .hero-title {
+      font-size: var(--display-size);
+      font-weight: 900;
+      margin: 0;
+      color: var(--on-surface);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+    .hero-title em {
+      font-style: normal;
+      color: var(--primary);
+    }
+    .hero-subtitle {
+      color: var(--on-surface-variant);
+      font-size: var(--subhead-size);
+      margin: 0;
+    }
+
+    /* Mode Navigation & Filter Bar */
+    .control-panel {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      align-items: center;
+      justify-content: space-between;
+      background: var(--surface-container-low);
+      padding: var(--space-md) var(--space-lg);
+      border-radius: var(--rounded-full);
+      box-shadow: var(--shadow-grape);
+    }
+    .nav-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      align-items: center;
+    }
+    .nav-btn {
+      background: var(--surface-container);
+      color: var(--on-surface);
+      border: 1px solid transparent;
+      padding: 0.5rem 1rem;
+      border-radius: var(--rounded-full);
+      font-weight: 700;
+      font-size: var(--label-size);
+      cursor: pointer;
+      transition: all var(--dur-short) var(--ease-bounce);
+    }
+    .nav-btn:hover {
+      transform: var(--lift);
+      background: var(--surface-container-high);
+    }
+    .nav-btn.active {
+      background: var(--primary);
+      color: var(--on-primary);
+      box-shadow: var(--shadow-pink);
+    }
+    .nav-btn.accent-mode {
+      background: #f3e8ff;
+      color: var(--secondary);
+    }
+    .nav-btn.accent-mode.active {
+      background: var(--secondary);
+      color: #ffffff;
+      box-shadow: var(--shadow-grape);
+    }
+
+    /* Status Bar */
+    .quiz-status-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: var(--space-md);
+    }
+    .stat-pill-card {
+      background: var(--surface-container-low);
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--rounded);
+      box-shadow: var(--shadow-pink);
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+    .stat-pill-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--rounded-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      background: var(--surface-container);
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+    .stat-info {
+      display: flex;
+      flex-direction: column;
+    }
+    .stat-label {
+      font-size: var(--label-size);
+      color: var(--on-surface-variant);
+      font-weight: 700;
+    }
+    .stat-value {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--on-surface);
+      line-height: 1.2;
+    }
+
+    /* Layout: Main Quiz Canvas + Sidebar Question Navigator */
+    .quiz-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: var(--space-lg);
+      align-items: start;
+    }
+    @media (max-width: 860px) {
+      .quiz-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Question Navigator Grid */
+    .question-navigator {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+      box-shadow: var(--shadow-grape);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .nav-grid-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-grid-title {
+      font-size: var(--subhead-size);
+      font-weight: 800;
+      margin: 0;
+      color: var(--secondary);
+    }
+    .nav-grid-legend {
+      display: flex;
+      gap: var(--space-xs);
+      font-size: 0.75rem;
+      color: var(--on-surface-variant);
+    }
+    .legend-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 2px;
+    }
+    .legend-dot.correct { background: var(--positive); }
+    .legend-dot.wrong { background: var(--error); }
+    .legend-dot.current { background: var(--primary); }
+
+    .q-number-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      max-height: 380px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+    .q-btn {
+      aspect-ratio: 1;
+      border-radius: var(--rounded-full);
+      border: 1px solid var(--outline-variant);
+      background: var(--surface-container);
+      color: var(--on-surface);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--dur-short) var(--ease-bounce);
+    }
+    .q-btn:hover {
+      transform: var(--lift);
+      border-color: var(--primary);
+    }
+    .q-btn.current {
+      border: 2px solid var(--primary);
+      box-shadow: 0 0 0 2px rgba(194, 32, 127, 0.25);
+      font-weight: 900;
+    }
+    .q-btn.correct {
+      background: var(--positive-bg);
+      border-color: var(--positive-border);
+      color: var(--positive);
+    }
+    .q-btn.wrong {
+      background: #ffebee;
+      border-color: #fca5a5;
+      color: var(--error);
+    }
+    .q-btn.answered-exam {
+      background: #e0f2fe;
+      border-color: #7dd3fc;
+      color: #0369a1;
+    }
+
+    /* Question Card Canvas */
+    .question-card {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-xl);
+      box-shadow: var(--shadow-pink);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+    .q-header-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      border-bottom: 2px dashed var(--surface-container-high);
+      padding-bottom: var(--space-md);
+    }
+    .q-tags {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+    .q-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.65rem;
+      border-radius: var(--rounded-full);
+      background: var(--surface-container);
+      color: var(--on-surface-variant);
+    }
+    .q-tag.year {
+      background: #e9dcfa;
+      color: var(--secondary);
+    }
+    .q-tag.sec {
+      background: #fce7f3;
+      color: var(--primary);
+    }
+    .q-tag.cat {
+      background: #dbeafe;
+      color: #1d4ed8;
+    }
+
+    .q-prompt-box {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--on-surface);
+      line-height: 1.6;
+    }
+    .q-visual-cue {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #fff8eb;
+      border: 1px solid #fde68a;
+      border-radius: var(--rounded);
+      padding: 0.4rem 0.9rem;
+      margin: 0.5rem 0;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #92400e;
+    }
+
+    /* Options */
+    .options-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .option-btn {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      background: var(--surface-container-low);
+      border: 2px solid var(--outline-variant);
+      border-radius: var(--rounded-full);
+      padding: 0.85rem var(--space-lg);
+      cursor: pointer;
+      text-align: left;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--on-surface);
+      transition: all var(--dur-short) var(--ease-bounce);
+      width: 100%;
+    }
+    .option-btn:hover:not(:disabled) {
+      border-color: var(--primary);
+      transform: var(--lift);
+      box-shadow: var(--shadow-pink);
+    }
+    .option-index {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--surface-container);
+      color: var(--on-surface-variant);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      flex-shrink: 0;
+      font-size: 0.95rem;
+      transition: all var(--dur-short) ease;
+    }
+    .option-btn.selected {
+      border-color: var(--primary);
+      background: #fff0f7;
+    }
+    .option-btn.selected .option-index {
+      background: var(--primary);
+      color: #ffffff;
+    }
+    .option-btn.correct-reveal {
+      border-color: var(--positive);
+      background: var(--positive-bg);
+      color: #14532d;
+    }
+    .option-btn.correct-reveal .option-index {
+      background: var(--positive);
+      color: #ffffff;
+    }
+    .option-btn.wrong-reveal {
+      border-color: var(--error);
+      background: #fef2f2;
+      color: #991b1b;
+    }
+    .option-btn.wrong-reveal .option-index {
+      background: var(--error);
+      color: #ffffff;
+    }
+
+    /* Feedback & Explanation Card */
+    .explanation-box {
+      border-radius: var(--rounded);
+      padding: var(--space-md) var(--space-lg);
+      background: #fdf4ff;
+      border-left: 5px solid var(--primary);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      animation: popIn 0.3s var(--ease-bounce);
+    }
+    .explanation-box.success-border {
+      background: var(--positive-bg);
+      border-left-color: var(--positive);
+    }
+    .explanation-box.error-border {
+      background: #fff5f5;
+      border-left-color: var(--error);
+    }
+    .exp-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-xs);
+    }
+    .exp-status {
+      font-size: 1.1rem;
+      font-weight: 900;
+    }
+    .exp-status.success { color: var(--positive); }
+    .exp-status.fail { color: var(--error); }
+    .exp-text {
+      font-size: 0.95rem;
+      color: var(--on-surface);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .exp-highlight {
+      font-weight: 700;
+      color: var(--secondary);
+    }
+
+    /* Bottom Action Controls */
+    .action-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      padding-top: var(--space-sm);
+    }
+    .btn-pill {
+      background: var(--surface-container);
+      color: var(--on-surface);
+      border: none;
+      padding: 0.65rem 1.4rem;
+      border-radius: var(--rounded-full);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      transition: all var(--dur-short) var(--ease-bounce);
+    }
+    .btn-pill:hover:not(:disabled) {
+      transform: var(--lift);
+      background: var(--surface-container-high);
+    }
+    .btn-pill.primary {
+      background: var(--primary);
+      color: var(--on-primary);
+      box-shadow: var(--shadow-pink);
+    }
+    .btn-pill.primary:hover:not(:disabled) {
+      box-shadow: var(--shadow-pink-deep);
+    }
+    .btn-pill.secondary {
+      background: var(--secondary);
+      color: #ffffff;
+      box-shadow: var(--shadow-grape);
+    }
+    .btn-pill:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
+    /* Summary Modal / Section */
+    .summary-card {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-xl);
+      box-shadow: var(--shadow-pink-deep);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+    .score-circle {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      box-shadow: var(--shadow-pink);
+    }
+    .score-number {
+      font-size: 2.4rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .score-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      opacity: 0.9;
+    }
+
+    .report-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-md);
+      text-align: left;
+    }
+    .report-item {
+      background: var(--surface-container);
+      padding: var(--space-md);
+      border-radius: var(--rounded);
+    }
+    .report-item-title {
+      font-size: var(--label-size);
+      color: var(--on-surface-variant);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .report-item-val {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--on-surface);
+    }
+
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.96); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* Mode Toggle Banner */
+    .mode-switch-group {
+      display: flex;
+      background: var(--surface-container-high);
+      border-radius: var(--rounded-full);
+      padding: 3px;
+    }
+    .mode-switch-btn {
+      border: none;
+      background: transparent;
+      padding: 0.4rem 0.9rem;
+      border-radius: var(--rounded-full);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--on-surface-variant);
+      cursor: pointer;
+      transition: all var(--dur-short) ease;
+    }
+    .mode-switch-btn.active {
+      background: #ffffff;
+      color: var(--on-surface);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 640px) {
+      .page-grid {
+        padding: var(--space-sm);
+      }
+      .question-card {
+        padding: var(--space-md);
+      }
+      .hero-banner {
+        padding: var(--space-md);
+      }
+      .control-panel {
+        border-radius: var(--rounded);
+      }
+      .option-btn {
+        padding: 0.7rem var(--space-md);
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-grid">
+    
+    <!-- Hero Header -->
+    <header class="hero-banner">
+      <div class="hero-badge-row">
+        <span class="pill-badge">教育部學習扶助標準化評量</span>
+        <span class="pill-badge secondary">國小五年級英語科</span>
+        <span class="pill-badge sky">110 ~ 115 年歷屆題庫 (90 題)</span>
+      </div>
+      <h1 class="hero-title">國小五年級英語科 <em>閱讀篩選測驗</em> 互動練習庫</h1>
+      <p class="hero-subtitle">收錄 110、111、112、113、114、115 年共六次非聽力測驗第 11～25 題（單字辨識與句子理解），提供即時作答、精闢解析、計分診斷與錯題複習。</p>
+    </header>
+
+    <!-- Top Navigation & Controls -->
+    <div class="control-panel">
+      <!-- Year & Mode Filter Pills -->
+      <div class="nav-pills" id="yearSelector">
+        <button class="nav-btn active" onclick="selectYear('all')">🌟 全部 90 題混合</button>
+        <button class="nav-btn" onclick="selectYear(110)">110 年 (15題)</button>
+        <button class="nav-btn" onclick="selectYear(111)">111 年 (15題)</button>
+        <button class="nav-btn" onclick="selectYear(112)">112 年 (15題)</button>
+        <button class="nav-btn" onclick="selectYear(113)">113 年 (15題)</button>
+        <button class="nav-btn" onclick="selectYear(114)">114 年 (15題)</button>
+        <button class="nav-btn" onclick="selectYear(115)">115 年 (15題)</button>
+        <button class="nav-btn accent-mode" onclick="showMistakesOnly()" id="mistakeFilterBtn">📌 錯題複習 (<span id="mistakeCountText">0</span>)</button>
+      </div>
+
+      <!-- Practice vs Exam Mode Toggle -->
+      <div class="mode-switch-group">
+        <button class="mode-switch-btn active" id="modePracticeBtn" onclick="setPlayMode('practice')">即時解析模式</button>
+        <button class="mode-switch-btn" id="modeExamBtn" onclick="setPlayMode('exam')">模擬考試模式</button>
+      </div>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="quiz-status-bar">
+      <div class="stat-pill-card">
+        <div class="stat-pill-icon">📝</div>
+        <div class="stat-info">
+          <span class="stat-label">當前作答進度</span>
+          <span class="stat-value" id="progressVal">1 / 90</span>
+        </div>
+      </div>
+      <div class="stat-pill-card">
+        <div class="stat-pill-icon">🎯</div>
+        <div class="stat-info">
+          <span class="stat-label">當前答對率</span>
+          <span class="stat-value" id="accuracyVal">0%</span>
+        </div>
+      </div>
+      <div class="stat-pill-card">
+        <div class="stat-pill-icon">⭐</div>
+        <div class="stat-info">
+          <span class="stat-label">累積得分</span>
+          <span class="stat-value" id="scoreVal">0 分</span>
+        </div>
+      </div>
+      <div class="stat-pill-card">
+        <div class="stat-pill-icon">💡</div>
+        <div class="stat-info">
+          <span class="stat-label">待複習錯題</span>
+          <span class="stat-value" id="wrongCountVal">0 題</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Quiz Area -->
+    <div class="quiz-layout" id="mainQuizView">
+      
+      <!-- Question Card -->
+      <div class="question-card" id="qCard">
+        <div class="q-header-meta">
+          <div class="q-tags">
+            <span class="q-tag year" id="qYearTag">110 年第 11 題</span>
+            <span class="q-tag sec" id="qSecTag">一、辨識單字</span>
+            <span class="q-tag cat" id="qCatTag">基礎字彙</span>
+          </div>
+          <button class="btn-pill" onclick="toggleBookmarkCurrent()" id="bookmarkBtn" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">
+            <span>☆</span> 標記本題
+          </button>
+        </div>
+
+        <!-- Question Prompt -->
+        <div class="q-prompt-box">
+          <div id="qPromptText">載入題目中...</div>
+          <div id="qVisualCue" class="q-visual-cue" style="display: none;"></div>
+        </div>
+
+        <!-- Options Container -->
+        <div class="options-group" id="optionsContainer">
+          <!-- Dynamically populated options -->
+        </div>
+
+        <!-- Explanation Container (Appears in practice mode or after exam submission) -->
+        <div class="explanation-box" id="explanationBox" style="display: none;">
+          <div class="exp-title-row">
+            <span class="exp-status" id="expStatusText">正確！</span>
+            <span id="expKeyBadge" class="pill-badge secondary">解題關鍵</span>
+          </div>
+          <p class="exp-text" id="expDetailText"></p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-row">
+          <button class="btn-pill" id="prevBtn" onclick="prevQuestion()" disabled>
+            ← 上一題
+          </button>
+          
+          <div style="display: flex; gap: var(--space-sm);">
+            <button class="btn-pill" onclick="resetCurrentSet()">
+              🔄 重設本次作答
+            </button>
+            <button class="btn-pill secondary" id="submitExamBtn" onclick="submitExam()" style="display: none;">
+              🏁 交卷結算
+            </button>
+            <button class="btn-pill primary" id="nextBtn" onclick="nextQuestion()">
+              下一題 →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar: Question Navigator -->
+      <aside class="question-navigator">
+        <div class="nav-grid-header">
+          <h2 class="nav-grid-title">題目快速導覽</h2>
+          <div class="nav-grid-legend">
+            <span><span class="legend-dot correct"></span>對</span>
+            <span><span class="legend-dot wrong"></span>錯</span>
+            <span><span class="legend-dot current"></span>當前</span>
+          </div>
+        </div>
+        <div class="q-number-grid" id="qNavGrid">
+          <!-- Dynamically rendered 1..N buttons -->
+        </div>
+
+        <div style="border-top: 1px dashed var(--outline-variant); padding-top: var(--space-sm); margin-top: auto;">
+          <div style="font-size: 0.8rem; color: var(--on-surface-variant); display: flex; justify-content: space-between; margin-bottom: 6px;">
+            <span>卷別題數：<b id="activeSetCount">90</b> 題</span>
+            <span>已作答：<b id="answeredCount">0</b> 題</span>
+          </div>
+          <button class="btn-pill" style="width: 100%; justify-content: center; font-size: 0.82rem;" onclick="showFinalReport()">
+            📊 查看綜合學習報表
+          </button>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- Final Result / Summary Report View (Toggled) -->
+    <div class="summary-card" id="summaryView" style="display: none;">
+      <h2 style="font-size: var(--headline-size); margin: 0; color: var(--on-surface);">
+        🎉 測驗成果結算報告
+      </h2>
+      <div class="score-circle">
+        <div class="score-number" id="finalScoreDisplay">100</div>
+        <div class="score-label">分 / 100</div>
+      </div>
+      <p id="finalFeedbackNote" style="color: var(--on-surface-variant); font-size: 1.05rem; margin: 0;">
+        表現非常優異！充分掌握了國小五年級英語必備字彙與生活句型。
+      </p>
+
+      <div class="report-grid">
+        <div class="report-item">
+          <div class="report-item-title">測驗卷別</div>
+          <div class="report-item-val" id="reportScope">全部歷屆 90 題</div>
+        </div>
+        <div class="report-item">
+          <div class="report-item-title">總答題數 / 正確率</div>
+          <div class="report-item-val" id="reportAccuracy">0 / 0 (0%)</div>
+        </div>
+        <div class="report-item">
+          <div class="report-item-title">單字辨識命中率</div>
+          <div class="report-item-val" id="reportVocabRate">0%</div>
+        </div>
+        <div class="report-item">
+          <div class="report-item-title">句子與對話命中率</div>
+          <div class="report-item-val" id="reportSentenceRate">0%</div>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: center; gap: var(--space-md); flex-wrap: wrap;">
+        <button class="btn-pill primary" onclick="returnToQuiz()">
+          ✏️ 繼續練習 / 檢視題目
+        </button>
+        <button class="btn-pill secondary" onclick="reviewWrongFromReport()" id="reviewWrongBtn">
+          📌 專攻錯題 (<span id="reportWrongCount">0</span>)
+        </button>
+        <button class="btn-pill" onclick="resetAllRecords()">
+          🗑️ 清空所有歷史紀錄
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <api-shim></api-shim>
+  <script>
+    // --- 90 Questions Comprehensive Dataset (110~115 Non-Listening Questions 11~25) ---
+    // Sections: 
+    // 1: 一、辨識單字 (第11-17題，共7題)
+    // 2: 二、辨識句子與對話 (第18-25題，共8題)
+    // Structure: [year, qid, section, prompt, visualCue, [opt1, opt2, opt3], answer(1-based), explanation, category]
+    const RAW_QUESTIONS = [
+      // ==================== 110 年 (15題) ====================
+      [110, 11, 1, "請選出對應圖片的單字：", "【圖示：一碗香噴噴的白米飯 🍚】", ["juice", "cake", "rice"], 3, "圖片中為「米飯」，英文是 rice。(1) juice 是果汁，(2) cake 是蛋糕。", "日常食物"],
+      [110, 12, 1, "請看圖選出正確單字：", "【圖示：一隻黃色的香蕉 🍌】", ["banana", "apple", "orange"], 1, "圖示為香蕉，其英文是 banana。(2) apple 為蘋果，(3) orange 為柳橙。", "水果蔬果"],
+      [110, 13, 1, "請看圖選出人物動作：", "【圖示：一位小女孩正在看書 📖】", ["read", "swim", "sing"], 1, "女孩手拿書本閱讀，動作為 read（看書/閱讀）。(2) swim 是游泳，(3) sing 是唱歌。", "動作動詞"],
+      [110, 14, 1, "請看圖選出天氣狀態：", "【圖示：天空中下著綿綿細雨，有烏雲 🌧️】", ["sunny", "rainy", "windy"], 2, "圖片中在下雨，天氣是 rainy（下雨的）。(1) sunny 為晴天，(3) windy 為多風的。", "天氣氣候"],
+      [110, 15, 1, "請選出代表數字「7」的英文單字：", "【圖示：數字 7 🎈】", ["seven", "eleven", "twelve"], 1, "數字 7 的英文是 seven。(2) eleven 是 11，(3) twelve 是 12。", "數字數量"],
+      [110, 16, 1, "請選出文具用品名稱：", "【圖示：文具盒裡的長直尺 📏】", ["ruler", "eraser", "pencil"], 1, "圖示為直尺，英文為 ruler。(2) eraser 是橡皮擦，(3) pencil 是鉛筆。", "文具學校"],
+      [110, 17, 1, "請選出對應體態的形容詞：", "【圖示：長頸鹿個子非常高大 🦒】", ["short", "tall", "thin"], 2, "長頸鹿身材高大，形容詞使用 tall（高的）。(1) short 是矮的，(3) thin 是瘦的。", "外貌特徵"],
+      [110, 18, 2, "看短句選出相符情境：\n「My brother is one year old.」", "【句意：我的弟弟一歲大。】", ["照片中是剛滿一歲咬奶嘴的小嬰兒 👶", "背著大書包上高中的男生 🎒", "正在開車的成年男子 🚗"], 1, "「one year old」表示才一歲大，指的是嬰兒幼童。", "年齡與家人"],
+      [110, 19, 2, "看短句選出正確意思：\n「I want five bananas.」", "【句意：我想要五根香蕉。】", ["籃子裡有 3 顆蘋果 🍎", "盤子裡有 5 根黃色香蕉 🍌", "桌上有 5 顆橘子 🍊"], 2, "five bananas 為「五根香蕉」，對應裝有五根香蕉的盤子。", "購物數量"],
+      [110, 20, 2, "看短句選出相符情境：\n「The bird can dance. The dog can swim.」", "【句意：小鳥會跳舞，小狗會游泳。】", ["鳥在水裡游，狗在空中飛", "鳥在跳舞，狗在水裡游泳", "貓咪在睡覺，兔子在吃草"], 2, "「The bird can dance」小鳥會跳舞，「The dog can swim」小狗會游泳，完全吻合選項 2。", "動物與能力"],
+      [110, 21, 2, "閱讀生活簡短對話，選出最適當的回應：\nA: How is the weather today?\nB: It is warm. It is not hot.", "【對話：今天天氣如何？很溫暖，不會熱。】", ["It is cold and snowing.", "It is warm.", "It is super hot."], 2, "對話中 B 明確表示「It is warm. It is not hot.」（很溫暖，不熱），因此選 It is warm。", "日常天氣"],
+      [110, 22, 2, "看短句選出相符情境：\n「I see a black fish. It is happy.」", "【句意：我看到一條黑色的魚，牠很快樂。】", ["一隻白色的悠游小鴨 🦆", "一條黑色的魚在水中笑瞇瞇吐泡泡 🐟", "一隻在樹上的紅色小鳥 🐦"], 2, "black fish 是「黑色的魚」，happy 是開心的表情，故選黑色的魚。", "動物與顏色"],
+      [110, 23, 2, "看情境圖片選出最適當的短句：", "【圖示：烈日高照，小朋友戴太陽眼鏡喝冰水 ☀️】", ["It is cold.", "It is sunny.", "The girl is tall."], 2, "圖片烈日當空，表達晴朗炎熱，句子應選「It is sunny.」（天氣晴朗）。", "日常情境"],
+      [110, 24, 2, "閱讀簡短對話並選出正確答案：\nA: Can you play baseball?\nB: Yes, I ______.", "【日常能力問答】", ["can", "do", "am"], 1, "以助動詞「Can you...?」開頭提問能力，肯定回答應為「Yes, I can.」。", "情態助動詞"],
+      [110, 25, 2, "閱讀短文並選出正確描述：\n「Kevin can swim. He cannot sing. May can sing. She cannot dance.」", "【能力對照理解】", ["Kevin can swim. He can't sing.", "May can dance. Kevin can't.", "May can't sing."], 1, "文中首句即為「Kevin can swim. He cannot sing.」（Kevin 會游泳，不會唱歌），選項 (1) 完全相符。", "閱讀理解"],
+
+      // ==================== 111 年 (15題) ====================
+      [111, 11, 1, "看圖選出正確單字：", "【圖示：餐盤上的一片金黃披薩 🍕】", ["pizza", "hot dog", "hamburger"], 1, "圖示為比薩/披薩，英文為 pizza。(2) hot dog 是熱狗，(3) hamburger 是漢堡。", "日常食物"],
+      [111, 12, 1, "看圖選出代表數字：", "【圖示：數字 9 🎈】", ["six", "eight", "nine"], 3, "數字 9 的英文是 nine。(1) six 是 6，(2) eight 是 8。", "數字數量"],
+      [111, 13, 1, "看圖選出對應動作：", "【圖示：小男孩拿著筆在筆記本上寫字 ✍️】", ["read", "write", "dance"], 2, "圖中小男孩正在寫字，動詞是 write（寫）。(1) read 是閱讀，(3) dance 是跳舞。", "日常動作"],
+      [111, 14, 1, "看圖選出人物外貌描述：", "【圖示：一位戴著毛帽、瑟瑟發抖直打哆嗦的小孩 🥶】", ["hot", "cold", "warm"], 2, "小孩冷得發抖，形容詞為 cold（寒冷的）。(1) hot 是熱的，(3) warm 是溫暖的。", "感受感知"],
+      [111, 15, 1, "看圖選出正確家庭成員：", "【圖示：留著長髮溫柔微笑的媽媽 👩】", ["father", "mother", "brother"], 2, "圖中人物是媽媽，英文為 mother。(1) father 是爸爸，(3) brother 是兄弟。", "家庭成員"],
+      [111, 16, 1, "看圖選出顏色單字：", "【圖示：一片翠綠的小樹葉 🍃】", ["blue", "green", "red"], 2, "綠色的英文為 green。(1) blue 是藍色，(3) red 是紅色。", "顏色特徵"],
+      [111, 17, 1, "看圖選出動物名稱：", "【圖示：正在汪汪叫的小狗 🐶】", ["cat", "dog", "rabbit"], 2, "圖示為狗，英文為 dog。(1) cat 是貓咪，(3) rabbit 是兔子。", "動物名稱"],
+      [111, 18, 2, "閱讀簡短對話，選出最佳回話：\nA: What do you like?\nB: I like ______.", "【圖示：一盤金黃酥脆的蘋果派 🥧】", ["apple pie", "milk tea", "green fish"], 1, "圖片為蘋果派，英文是 apple pie。句型：I like apple pie.（我喜歡蘋果派）。", "喜好表達"],
+      [111, 19, 2, "看短句選出相符情境：\n「Can your sister read? No, she cannot.」", "【句意：你妹妹/姊姊會閱讀嗎？不，她不會。】", ["姊姊拿著故事書朗朗上口", "小妹妹看著書本搖搖頭表示看不懂", "哥哥正在操場跑步踢球"], 2, "句意為「姐姐/妹妹不會閱讀」，對應看不懂而搖頭的情境。", "生活對話"],
+      [111, 20, 2, "看短句選出相符意思：\n「My brother is five. He can write.」", "【句意：我弟弟五歲，他會寫字。】", ["哥哥十歲，正在學游泳", "弟弟五歲大，手握著筆在紙上練習寫字", "妹妹五歲，很會唱歌跳舞"], 2, "「is five」代表五歲，「can write」代表會寫字。", "年齡與能力"],
+      [111, 21, 2, "看短句選出相符情境：\n「It is cold. I want hot rice.」", "【句意：天氣很冷，我想要吃熱呼呼的米飯。】", ["炎炎夏日吃大西瓜 🍉", "外面颳冷風，小朋友坐在餐桌前想要吃熱騰騰的白飯 🍚", "小朋友在吃草莓冰淇淋 🍦"], 2, "句中「cold」（寒冷）與「hot rice」（熱飯），對應冷天想吃熱飯。", "感受與需求"],
+      [111, 22, 2, "看短句選出相符特徵：\n「My father is tall. My mother is thin.」", "【句意：我的爸爸很高，我的媽媽很瘦。】", ["爸爸高大的身影，身旁是身材纖細的媽媽", "爸爸矮矮胖胖，媽媽非常高大", "爸爸媽媽都是小嬰兒"], 1, "father is tall（爸爸高），mother is thin（媽媽瘦）。", "人物外貌特徵"],
+      [111, 23, 2, "閱讀對話選出正確回答：\nA: How old are you?\nB: I am ______ years old.", "【圖示：生日蛋糕插著 8 根蠟燭 🎂】", ["eight", "two", "ten"], 1, "蛋糕上有 8 根蠟燭代表 8 歲，8 的英文是 eight。", "年齡詢問"],
+      [111, 24, 2, "看情境選出適當祈使句：", "【圖示：老師請小朋友把課本拿出來打開 📚】", ["Close your eyes.", "Take out your book.", "Stand up, please."], 2, "請學生「拿出書本」的英文是 Take out your book。(1) 是閉上眼睛，(3) 是起立。", "教室用語"],
+      [111, 25, 2, "閱讀問答題：\nA: Is it a cat?\nB: No, it is not. It is a ______.", "【圖示：一隻長耳朵在跳動的小白兔 🐰】", ["dog", "rabbit", "bird"], 2, "圖示為兔子，英文是 rabbit。回答：It is a rabbit.", "基礎句型"],
+
+      // ==================== 112 年 (15題) ====================
+      [112, 11, 1, "看圖選出正確文具：", "【圖示：一枝黃色的鉛筆 ✏️】", ["pen", "pencil", "ruler"], 2, "圖中為鉛筆，英文為 pencil。(1) pen 是原子筆，(3) ruler 是尺。", "學校文具"],
+      [112, 12, 1, "看圖選出正確動物：", "【圖示：在枝頭上啼叫的小鳥 🐦】", ["bird", "cat", "fish"], 1, "圖中小鳥的英文是 bird。(2) cat 是貓，(3) fish 是魚。", "動物名稱"],
+      [112, 13, 1, "看圖選出動作單字：", "【圖示：小男孩戴著泳帽在泳池划水 🏊】", ["swim", "run", "jump"], 1, "圖示動作為游泳，英文是 swim。(2) run 是跑步，(3) jump 是跳躍。", "動作動詞"],
+      [112, 14, 1, "看圖選出日常飲料：", "【圖示：一杯白色的新鮮牛奶 🥛】", ["tea", "milk", "water"], 2, "圖中為牛奶，英文是 milk。(1) tea 是茶，(3) water 是白開水。", "飲食字彙"],
+      [112, 15, 1, "看圖選出正確顏色：", "【圖示：一顆黃澄澄的檸檬 🍋】", ["yellow", "red", "black"], 1, "檸檬是黃色的，黃色英文為 yellow。(2) red 是紅色，(3) black 是黑色。", "顏色認知"],
+      [112, 16, 1, "看圖選出衣服配件：", "【圖示：一頂帥氣的鴨舌帽子 🧢】", ["hat", "bag", "box"], 1, "帽子英文為 hat。(2) bag 是書包提袋，(3) box 是盒子。", "日常用品"],
+      [112, 17, 1, "看圖選出時間概念：", "【圖示：時鐘指針指著三點整 🕒】", ["three o'clock", "five o'clock", "seven o'clock"], 1, "三點整為 three o'clock。(2) 是五點整，(3) 是七點整。", "時間與時鐘"],
+      [112, 18, 2, "看短句選出相符情境：\n「I see two dogs. They are big.」", "【句意：我看到兩隻大狗。】", ["草地上有兩隻體型高大的狗狗正在奔跑", "水池裡有三條小金魚", "樹上有一隻小小的松鼠"], 1, "two dogs（兩隻狗）+ big（大），完全符合第一選項。", "數量與特徵"],
+      [112, 19, 2, "閱讀簡短對話，選出正確空格詞：\nA: What color is your pen?\nB: It is ______.", "【圖示：握在手裡是一枝藍色的筆 🖊️】", ["blue", "ten", "fat"], 1, "詢問顏色「What color is...?」，回答須為顏色單字，藍色為 blue。", "顏色問答"],
+      [112, 20, 2, "看短句選出相符意思：\n「Look at the girl. She can dance well.」", "【句意：看那位小女孩，她跳舞跳得很好。】", ["小男孩在水裡游得很快", "女孩穿著舞鞋，姿態優美地跳舞 💃", "小狗在院子裡汪汪叫"], 2, "「girl」（女孩）搭配「can dance well」（舞跳得很好）。", "能力表達"],
+      [112, 21, 2, "看短句選出正確回答：\nA: Are you happy today?\nB: Yes, ______.", "【問句：你今天開心嗎？】", ["I am", "I do", "I can"], 1, "「Are you...?」的肯定回答為「Yes, I am.」。", "Be動詞句型"],
+      [112, 22, 2, "看短句選出相符情境：\n「This is my brother. He is a tall student.」", "【句意：這是我的兄弟，他是個高個子的學生。】", ["穿著學生制服、身材高挑的男生 👨‍🎓", "坐在搖籃裡的小女嬰", "在公園打太極拳的年老爺爺"], 1, "brother（兄弟）加上 tall student（高挑的學生），符合穿學生服的男生。", "人物與身份"],
+      [112, 23, 2, "閱讀對話並選出最適當句子：\nA: Thank you very much!\nB: ______.", "【日常禮貌問答】", ["You are welcome.", "I am sorry.", "Good morning."], 1, "當對方說「Thank you very much!」時，標準禮貌回應是「You are welcome.」（不客氣）。", "日常社交禮儀"],
+      [112, 24, 2, "看圖選出相符描述：", "【圖示：桌上有三本書和兩枝筆 📚✏️】", ["There are three books.", "There are five birds.", "There is one cat."], 1, "桌上有三本書，對應「There are three books.」（有三本書）。", "數量存在句"],
+      [112, 25, 2, "閱讀短文選出正確理解：\n「Today is Sunday. It is sunny. Ken and his sister ride bikes in the park.」", "【天氣與日常活動】", ["Ken rides a bike on Sunday.", "Ken is swimming at school.", "The weather is rainy."], 1, "文中提及「Today is Sunday... ride bikes in the park」，因此 Ken 在週日騎腳踏車。", "簡易篇章理解"],
+
+      // ==================== 113 年 (15題) ====================
+      [113, 11, 1, "請看圖選出食物名稱：", "【圖示：生日派對上的香甜草莓蛋糕 🎂】", ["juice", "cake", "rice"], 2, "圖片為蛋糕，英文是 cake。(1) juice 是果汁，(3) rice 是米飯。", "飲食字彙"],
+      [113, 12, 1, "看圖選出文具用品：", "【圖示：書包裡裝的筆袋與鉛筆 ✏️】", ["pencil", "short", "you"], 1, "圖示為鉛筆，英文是 pencil。(2) short 是矮/短，(3) you 是你。", "文具名詞"],
+      [113, 13, 1, "看圖選出手指比出的數字：", "【圖示：比出「3」的手勢 🤟】", ["one", "three", "seven"], 2, "數字 3 的英文是 three。(1) one 是 1，(3) seven 是 7。", "數字認知"],
+      [113, 14, 1, "看圖選出正確動作：", "【圖示：老師在黑板前用粉筆寫字 ✍️】", ["write", "milk", "like"], 1, "書寫的動作是 write。(2) milk 是牛奶，(3) like 是喜歡。", "動作動詞"],
+      [113, 15, 1, "看圖選出人物身材對比：", "【圖示：長頸鹿與小猴子比身高，箭頭指向長頸鹿 🦒】", ["tall", "tea", "five"], 1, "箭頭指著身材高大的長頸鹿，形容詞是 tall（高的）。", "特徵形容詞"],
+      [113, 16, 1, "看圖選出天氣符號：", "【圖示：太陽公公露出大笑臉 ☀️】", ["sunny", "rainy", "cloudy"], 1, "太陽露臉為晴天，英文是 sunny。(2) rainy 是雨天，(3) cloudy 是多雲陰天。", "天氣名詞"],
+      [113, 17, 1, "看圖選出正確動物：", "【圖示：水族箱裡游動的小金魚 🐠】", ["bird", "dog", "fish"], 3, "魚的英文為 fish。(1) bird 是鳥，(2) dog 是狗。", "動物名詞"],
+      [113, 18, 2, "看短句選出相符情境：\n「My brother is one year old.」", "【句意：我的弟弟一歲大。】", ["正坐在學步車裡慶祝一歲抓周的小嬰兒 👶", "正在打籃球的大學生", "正在煮咖啡的叔叔"], 1, "one year old 是一歲大，對應剛滿週歲的小嬰兒。", "年齡與家人"],
+      [113, 19, 2, "看短句選出正確水果盤：\n「I want five bananas.」", "【句意：我想要五根香蕉。】", ["盤子裡盛裝五根香蕉 🍌", "盤子裡盛裝五顆水蜜桃 🍑", "盤子裡只有一根香蕉"], 1, "five bananas 為五根香蕉，符合選項 1。", "數量與名詞複數"],
+      [113, 20, 2, "看短句選出相符情境：\n「The bird can dance. The dog can swim.」", "【句意：鳥會跳舞，狗會游泳。】", ["鳥兒跟著音樂搖擺跳舞，小狗在池塘划水 🐶🏊", "狗在樹上築巢，鳥在地上跑", "小貓在屋頂曬太陽"], 1, "bird can dance 與 dog can swim 完全符合選項描述。", "能力描述"],
+      [113, 21, 2, "閱讀簡短對話並選出正確回應：\nA: How is the weather?\nB: It is warm. It is not hot.", "【對話：天氣如何？天氣很溫暖，不熱。】", ["It is cold.", "It is warm.", "It is snowy."], 2, "B 回應「It is warm.」，選 It is warm。", "日常天氣問答"],
+      [113, 22, 2, "看短句選出相符圖片：\n「I see a black fish. It is happy.」", "【句意：我看到一條黑色的魚，牠很開心。】", ["一條黑色的魚笑瞇瞇地游著 🐟", "一隻黑色的小貓在睡覺 🐱", "一隻白色的天鵝在水面 🦢"], 1, "a black fish（一條黑魚）+ happy（開心），為黑色的魚笑瞇瞇游著。", "外觀與情緒"],
+      [113, 23, 2, "看情境圖選出最適當的短句：", "【圖示：路上行人穿著厚重羽絨外套，雙手環抱取暖 ❄️】", ["It is cold.", "It is sunny.", "The girl is tall."], 1, "行人穿著厚大衣取暖，說明天氣寒冷，句子選「It is cold.」。", "天氣與感受"],
+      [113, 24, 2, "閱讀對話並選出最佳問句：\nA: ______?\nB: I am ten years old.", "【對話問答】", ["What is your name?", "How old are you?", "How are you?"], 2, "回答「I am ten years old.」是回答年齡（十歲），問句應為「How old are you?」。", "年齡詢問句型"],
+      [113, 25, 2, "閱讀生活對話選出正確字詞：\nA: Can Peter ride a bicycle?\nB: No, he ______.", "【能力否定問答】", ["cannot", "is not", "do not"], 1, "Can 問句的否定簡答為「No, he cannot.」或「No, he can't.」。", "情態助動詞否定"],
+
+      // ==================== 114 年 (15題) ====================
+      [114, 11, 1, "看圖選出正確單字：", "【圖示：一位身材非常苗條纖細的女孩 🧍‍♀️】", ["three", "thin", "see"], 2, "瘦瘦苗條的形容詞是 thin。(1) three 是數字三，(3) see 是看見。", "特徵形容詞"],
+      [114, 12, 1, "看圖選出動作單字：", "【圖示：手裡拿著筆在紙上書寫字句 ✍️】", ["write", "read", "sing"], 1, "寫字動詞為 write。(2) read 是讀，(3) sing 是唱。", "動作動詞"],
+      [114, 13, 1, "看圖選出需求動詞：", "【圖示：小朋友伸手想要拿桌上的水杯 🥤】", ["want", "water", "warm"], 1, "表示「想要」動詞是 want。(2) water 是水，(3) warm 是溫暖的。", "核心動詞"],
+      [114, 14, 1, "看圖選出體型外貌形容詞：", "【圖示：哥哥個子很高，比旁邊的朋友高出一顆頭 👦】", ["tall", "cold", "short"], 1, "個子高為 tall。(2) cold 是寒冷，(3) short 是矮/短。", "外貌形容詞"],
+      [114, 15, 1, "看圖選出人物稱謂：", "【圖示：一位綁著蝴蝶結馬尾的小女孩 👧】", ["boy", "girl", "blue"], 2, "女孩的英文為 girl。(1) boy 是男孩，(3) blue 是藍色。", "人物稱謂"],
+      [114, 16, 1, "看圖選出氣象圖示：", "【圖示：天空中飄著烏雲與雨滴 🌧️】", ["rainy", "sunny", "hot"], 1, "下雨的天氣為 rainy。(2) sunny 是晴天，(3) hot 是熱的。", "天氣名詞"],
+      [114, 17, 1, "看圖選出數字英文：", "【圖示：數字 10 🎈】", ["ten", "two", "twelve"], 1, "數字 10 的英文是 ten。(2) two 是 2，(3) twelve 是 12。", "數字數量"],
+      [114, 18, 2, "看簡短對話選出相符圖片：\nA: What do you like?\nB: Apple pie.", "【圖示：金黃美味的烤蘋果派 🥧】", ["一盤剛出爐飄香的蘋果派", "一碗熱騰騰的牛肉麵", "一杯冰檸檬紅茶"], 1, "對話中 B 表示喜歡「Apple pie」（蘋果派）。", "食物喜好"],
+      [114, 19, 2, "看對話選出相符情境：\nA: Can your sister read?\nB: No, she cannot.", "【句意：你妹妹會看書閱讀嗎？不，她不會。】", ["妹妹捧著書讀得津津有味", "小妹妹手拿童書一臉疑惑看不懂", "妹妹在操場跳繩"], 2, "「No, she cannot」表示妹妹不會閱讀，符合看不懂的表現。", "能力生活問答"],
+      [114, 20, 2, "看短句選出相符意思：\n「My brother is five. He can write.」", "【句意：我弟弟五歲，他會寫字。】", ["五歲的小男孩拿著彩色筆端正地在紙上寫字", "八歲的小學生在彈鋼琴", "三歲的寶寶在地上爬行"], 1, "is five（五歲）與 can write（會寫字）對應五歲男孩寫字。", "年齡與能力"],
+      [114, 21, 2, "看短句選出相符意思：\n「It is cold. I want hot rice.」", "【句意：天氣很冷，我想要吃熱騰騰的飯。】", ["外面寒風刺骨，小朋友想要來一碗熱呼呼的白飯 🍚", "大熱天想吃冰淇淋", "春天想去公園放風箏"], 1, "It is cold（很冷）與 want hot rice（想要熱飯）。", "感受與飲食"],
+      [114, 22, 2, "看短句選出相符情境：\n「My father is tall. My mother is thin.」", "【句意：我爸爸很高，我媽媽很瘦。】", ["爸爸矮胖、媽媽也很壯碩", "爸爸身材高挑站挺挺，身邊是苗條纖瘦的媽媽", "爸爸媽媽是兩隻小鳥"], 2, "father is tall（爸爸高），mother is thin（媽媽瘦）。", "人物外型描述"],
+      [114, 23, 2, "閱讀簡短對話選出正確字詞：\nA: What time is it?\nB: It is ______ o'clock.", "【圖示：時鐘指著整點 4 點 🕓】", ["four", "forty", "fourteen"], 1, "指針指在 4 點整，4 的英文是 four。(2) forty 是 40，(3) fourteen 是 14。", "時間問答"],
+      [114, 24, 2, "看生活對話選出合適動詞：\nA: Let us ______ soccer together!\nB: Great! Let us go.", "【日常邀約】", ["play", "drink", "cook"], 1, "踢足球或進行球類運動搭配動詞「play」，如 play soccer。", "球類休閒動詞"],
+      [114, 25, 2, "閱讀文段選出正確選項：\n「I have a dog. His name is Lucky. Lucky can run fast, but he cannot jump high.」", "【寵物能力短文】", ["Lucky can run fast.", "Lucky can jump high.", "Lucky is a cat."], 1, "文中明確指出「Lucky can run fast」（Lucky 跑得很快），但不會跳得很高。", "簡易短文閱讀"],
+
+      // ==================== 115 年 (15題) ====================
+      [115, 11, 1, "看圖選出感覺形容詞：", "【圖示：小男孩跑完步坐在地上擦汗打哈欠 🥱】", ["tired", "tall", "thin"], 1, "跑完步很累很疲倦，英文為 tired。(2) tall 是高的，(3) thin 是瘦的。", "感受與情緒"],
+      [115, 12, 1, "看圖選出體態形容詞：", "【圖示：身材非常骨感纖瘦的小男生 🚶‍♂️】", ["thin", "fat", "short"], 1, "身材纖瘦的形容詞為 thin。(2) fat 是胖的，(3) short 是矮的。", "外貌特徵"],
+      [115, 13, 1, "看圖選出動物單字：", "【圖示：一隻小狗在草地上搖尾巴 🐶】", ["dog", "bird", "rabbit"], 1, "小狗的英文為 dog。(2) bird 是鳥，(3) rabbit 是兔子。", "動物名稱"],
+      [115, 14, 1, "看圖選出時間單字：", "【圖示：客廳的掛鐘指向 3 點整 🕒】", ["three", "six", "nine"], 1, "指針指著 3 點，數字為 three。(2) six 是 6，(3) nine 是 9。", "時間與時鐘"],
+      [115, 15, 1, "看圖選出動作單字：", "【圖示：穿著舞裙的小女孩在旋轉跳舞 💃】", ["dance", "swim", "sing"], 1, "跳舞的動詞為 dance。(2) swim 是游泳，(3) sing 是唱歌。", "動作動詞"],
+      [115, 16, 1, "看圖選出日常食物：", "【圖示：蒸籠裡一碗熱騰騰的白米飯 🍚】", ["rice", "noodles", "bread"], 1, "米飯的英文是 rice。(2) noodles 是麵條，(3) bread 是麵包。", "食物字彙"],
+      [115, 17, 1, "看圖選出天氣狀態：", "【圖示：天空中大太陽笑臉高掛，陽光明媚 ☀️】", ["sunny", "windy", "rainy"], 1, "出大太陽是晴天，英文為 sunny。(2) windy 是多風的，(3) rainy 是下雨的。", "天氣形容詞"],
+      [115, 18, 2, "看短句選出相符情境：\n「The girl is tall. She can dance.」", "【句意：那個女孩很高，她會跳舞。】", ["一位高挑的女同學正在台上跳舞 💃", "一位矮小的男孩在水裡游泳", "一隻小花貓在追蝴蝶"], 1, "「The girl is tall」女孩高挑，「She can dance」她會跳舞。", "外觀與才藝"],
+      [115, 19, 2, "看短句選出相符情境：\n「I see a dog. It is not big.」", "【句意：我看見一隻狗，牠並不大（是隻小狗）。】", ["一隻體型嬌小可愛的小博美狗 🐶", "一隻像小牛一樣巨大的獒犬", "一隻在水裡游動的大鯨魚 🐋"], 1, "「not big」表示不大，即小狗。", "外型特徵判斷"],
+      [115, 20, 2, "閱讀簡短對話選出正確字詞：\nA: Can you swim?\nB: Yes, I can. But I ______ dance.", "【能力對照】", ["cannot", "am", "do"], 1, "連接詞 But 表示轉折對比，前面「會游泳（Yes, I can）」，後面轉折為「但不會跳舞（cannot dance）」。", "情態助動詞轉折"],
+      [115, 21, 2, "閱讀情境選出適當回應：\n老師在課堂上對回答不完整的小朋友親切地說：\n「Do not worry. Please ______!」", "【鼓勵課堂用語】", ["try again", "go home", "be quiet"], 1, "老師鼓勵學生再試一次，常用「Please try again!」（請再試一次）。", "日常課堂鼓勵"],
+      [115, 22, 2, "看短句選出相符意思：\n「How is the weather? It is cool today.」", "【句意：今天天氣如何？今天很涼爽。】", ["烈日炎炎滿身大汗", "秋風徐徐，天氣涼爽舒適 🍃", "冰天雪地寒風刺骨"], 2, "cool 表示涼爽舒服，不是酷熱也不是酷寒。", "氣候描述"],
+      [115, 23, 2, "閱讀對話並選出正確回應：\nA: Where is my pencil?\nB: Look! It is ______ the desk.", "【圖示：鉛筆正放在書桌的桌面上 ✏️🖥️】", ["on", "under", "in"], 1, "東西在桌子上方表面上，介系詞使用「on」，如 on the desk。", "空間方位介系詞"],
+      [115, 24, 2, "閱讀對話選出合適代名詞：\nA: Who is that boy?\nB: ______ is my new classmate, Tom.", "【人物介紹問答】", ["He", "She", "It"], 1, "that boy 是男生，代名詞應使用「He」（他）。", "人稱代名詞"],
+      [115, 25, 2, "閱讀短文選出正確理解：\n「Mary is ten years old. She likes cats and birds. She has one yellow bird at home.」", "【寵物短文理解】", ["Mary has a yellow bird.", "Mary is five years old.", "Mary does not like cats."], 1, "文中提到「She has one yellow bird at home」（她家裡有一隻黃色的小鳥），完全相符。", "閱讀理解測驗"]
+    ];
+
+    // --- State variables ---
+    let appState = {
+      activeYear: 'all',          // 'all', 110, 111, 112, 113, 114, 115, 'mistakes'
+      playMode: 'practice',       // 'practice' (instant feedback) or 'exam' (submit at end)
+      currentIndex: 0,            // index in current active questions list
+      userAnswers: {},            // key: "year-qid" -> selected option index (1, 2, 3)
+      examSubmitted: false,       // whether exam is submitted
+      bookmarked: {},             // key: "year-qid" -> true
+      savedHistory: {
+        totalAnswered: 0,
+        correctCount: 0
+      }
+    };
+
+    let activeQuestions = [];
+
+    // --- Initialization ---
+    async function initApp() {
+      // Load persistence if available
+      if (window.notebookAppApi) {
+        try {
+          const loaded = await window.notebookAppApi.getAppState();
+          if (loaded && typeof loaded === 'object') {
+            if (loaded.userAnswers) appState.userAnswers = loaded.userAnswers;
+            if (loaded.bookmarked) appState.bookmarked = loaded.bookmarked;
+            if (loaded.activeYear) appState.activeYear = loaded.activeYear;
+            if (loaded.playMode) appState.playMode = loaded.playMode;
+          }
+        } catch (err) {
+          console.warn("Storage load warning:", err);
+        }
+      }
+
+      applyFilterAndRender();
+      updateTopStats();
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === 'function') {
+        window.notebookAppApi.notifyAppReady();
+      }
+    }
+
+    // --- Save state helper ---
+    async function saveState() {
+      if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === 'function') {
+        try {
+          await window.notebookAppApi.setAppState({
+            userAnswers: appState.userAnswers,
+            bookmarked: appState.bookmarked,
+            activeYear: appState.activeYear,
+            playMode: appState.playMode
+          });
+        } catch (e) {
+          console.warn("Save state warning:", e);
+        }
+      }
+    }
+
+    // --- Filter and update questions list ---
+    function applyFilterAndRender() {
+      if (appState.activeYear === 'all') {
+        activeQuestions = [...RAW_QUESTIONS];
+      } else if (appState.activeYear === 'mistakes') {
+        // Only questions answered incorrectly
+        activeQuestions = RAW_QUESTIONS.filter(q => {
+          const key = `${q[0]}-${q[1]}`;
+          const ans = appState.userAnswers[key];
+          return ans && ans !== q[6];
+        });
+        if (activeQuestions.length === 0) {
+          alert("目前沒有任何答錯的題目喔！太棒了！為您切換至全部題目。");
+          appState.activeYear = 'all';
+          activeQuestions = [...RAW_QUESTIONS];
+        }
+      } else {
+        const yr = parseInt(appState.activeYear, 10);
+        activeQuestions = RAW_QUESTIONS.filter(q => q[0] === yr);
+      }
+
+      if (appState.currentIndex >= activeQuestions.length) {
+        appState.currentIndex = 0;
+      }
+
+      renderNavigator();
+      renderCurrentQuestion();
+      updateYearButtonsUI();
+      updateTopStats();
+    }
+
+    function selectYear(yr) {
+      appState.activeYear = yr;
+      appState.currentIndex = 0;
+      appState.examSubmitted = false;
+      document.getElementById('summaryView').style.display = 'none';
+      document.getElementById('mainQuizView').style.display = 'grid';
+      applyFilterAndRender();
+      saveState();
+    }
+
+    function showMistakesOnly() {
+      selectYear('mistakes');
+    }
+
+    function setPlayMode(mode) {
+      appState.playMode = mode;
+      document.getElementById('modePracticeBtn').classList.toggle('active', mode === 'practice');
+      document.getElementById('modeExamBtn').classList.toggle('active', mode === 'exam');
+      document.getElementById('submitExamBtn').style.display = (mode === 'exam') ? 'inline-flex' : 'none';
+      
+      renderCurrentQuestion();
+      renderNavigator();
+      saveState();
+    }
+
+    function updateYearButtonsUI() {
+      const container = document.getElementById('yearSelector');
+      if (!container) return;
+      const btns = container.querySelectorAll('.nav-btn');
+      btns.forEach(btn => {
+        const text = btn.textContent || btn.innerText || '';
+        if (appState.activeYear === 'all' && text.includes('全部')) {
+          btn.classList.add('active');
+        } else if (appState.activeYear === 'mistakes' && text.includes('錯題複習')) {
+          btn.classList.add('active');
+        } else if (typeof appState.activeYear === 'number' && text.includes(String(appState.activeYear) + ' 年')) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // Update mistake count
+      let mistakeCount = 0;
+      RAW_QUESTIONS.forEach(q => {
+        const key = `${q[0]}-${q[1]}`;
+        const ans = appState.userAnswers[key];
+        if (ans && ans !== q[6]) mistakeCount++;
+      });
+      document.getElementById('mistakeCountText').innerText = mistakeCount;
+      document.getElementById('wrongCountVal').innerText = `${mistakeCount} 題`;
+      document.getElementById('activeSetCount').innerText = activeQuestions.length;
+    }
+
+    // --- Render Question Canvas ---
+    function renderCurrentQuestion() {
+      if (activeQuestions.length === 0) return;
+      const q = activeQuestions[appState.currentIndex];
+      const qKey = `${q[0]}-${q[1]}`;
+      const selected = appState.userAnswers[qKey];
+      const isExam = appState.playMode === 'exam' && !appState.examSubmitted;
+
+      // Header tags
+      document.getElementById('qYearTag').innerText = `${q[0]} 年 第 ${q[1]} 題`;
+      document.getElementById('qSecTag').innerText = q[2] === 1 ? '一、辨識單字 (第11-17題)' : '二、辨識句子與對話 (第18-25題)';
+      document.getElementById('qCatTag').innerText = q[8] || '基礎英語能力';
+
+      // Bookmark button
+      const bmBtn = document.getElementById('bookmarkBtn');
+      if (appState.bookmarked[qKey]) {
+        bmBtn.innerHTML = '<span>★</span> 已標記';
+        bmBtn.style.color = 'var(--primary)';
+      } else {
+        bmBtn.innerHTML = '<span>☆</span> 標記本題';
+        bmBtn.style.color = 'var(--on-surface)';
+      }
+
+      // Prompt & visual cue
+      document.getElementById('qPromptText').innerHTML = q[3].replace(/\n/g, '<br>');
+      const cueEl = document.getElementById('qVisualCue');
+      if (q[4]) {
+        cueEl.style.display = 'inline-flex';
+        cueEl.innerText = q[4];
+      } else {
+        cueEl.style.display = 'none';
+      }
+
+      // Options
+      const optionsContainer = document.getElementById('optionsContainer');
+      optionsContainer.innerHTML = '';
+
+      const optionLabels = ['(1)', '(2)', '(3)'];
+      q[5].forEach((optText, idx) => {
+        const optVal = idx + 1;
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.setAttribute('type', 'button');
+
+        const indexBadge = `<span class="option-index">${optionLabels[idx]}</span>`;
+        const textSpan = `<span style="flex: 1;">${optText}</span>`;
+        btn.innerHTML = `${indexBadge}${textSpan}`;
+
+        // Evaluation styles
+        if (selected) {
+          if (isExam) {
+            // Exam mode before submit: just show selected
+            if (selected === optVal) {
+              btn.classList.add('selected');
+            }
+          } else {
+            // Practice mode or Exam submitted: show correct/wrong
+            if (optVal === q[6]) {
+              btn.classList.add('correct-reveal');
+            } else if (selected === optVal && selected !== q[6]) {
+              btn.classList.add('wrong-reveal');
+            }
+          }
+        }
+
+        btn.onclick = () => handleSelectOption(optVal);
+        optionsContainer.appendChild(btn);
+      });
+
+      // Explanation Box
+      const expBox = document.getElementById('explanationBox');
+      if (selected && !isExam) {
+        expBox.style.display = 'block';
+        const isRight = selected === q[6];
+        expBox.className = `explanation-box ${isRight ? 'success-border' : 'error-border'}`;
+        
+        const statusEl = document.getElementById('expStatusText');
+        statusEl.className = `exp-status ${isRight ? 'success' : 'fail'}`;
+        statusEl.innerText = isRight ? '恭喜答對！🎉' : `作答錯誤 (正確答案為 (${q[6]})) 💡`;
+
+        document.getElementById('expDetailText').innerHTML = `
+          <strong>解析說明：</strong>${q[7]}<br>
+          <span class="exp-highlight">關鍵重點考點：</span>${q[8]}
+        `;
+      } else {
+        expBox.style.display = 'none';
+      }
+
+      // Previous / Next buttons state
+      document.getElementById('prevBtn').disabled = (appState.currentIndex === 0);
+      document.getElementById('nextBtn').disabled = (appState.currentIndex === activeQuestions.length - 1);
+
+      // Update counters
+      document.getElementById('progressVal').innerText = `${appState.currentIndex + 1} / ${activeQuestions.length}`;
+      updateTopStats();
+    }
+
+    // --- Select option handler ---
+    function handleSelectOption(optVal) {
+      const q = activeQuestions[appState.currentIndex];
+      const qKey = `${q[0]}-${q[1]}`;
+      
+      // In practice mode, allow changing or re-answering
+      appState.userAnswers[qKey] = optVal;
+
+      renderCurrentQuestion();
+      renderNavigator();
+      updateTopStats();
+      saveState();
+    }
+
+    // --- Render Navigator Buttons ---
+    function renderNavigator() {
+      const grid = document.getElementById('qNavGrid');
+      grid.innerHTML = '';
+
+      let answeredCount = 0;
+      activeQuestions.forEach((q, idx) => {
+        const qKey = `${q[0]}-${q[1]}`;
+        const selected = appState.userAnswers[qKey];
+        const isExam = appState.playMode === 'exam' && !appState.examSubmitted;
+
+        const btn = document.createElement('button');
+        btn.className = 'q-btn';
+        btn.innerText = q[1]; // show original question number (11~25)
+
+        if (idx === appState.currentIndex) {
+          btn.classList.add('current');
+        }
+
+        if (selected) {
+          answeredCount++;
+          if (isExam) {
+            btn.classList.add('answered-exam');
+          } else {
+            if (selected === q[6]) {
+              btn.classList.add('correct');
+            } else {
+              btn.classList.add('wrong');
+            }
+          }
+        }
+
+        btn.onclick = () => {
+          appState.currentIndex = idx;
+          renderCurrentQuestion();
+          renderNavigator();
+        };
+
+        grid.appendChild(btn);
+      });
+
+      document.getElementById('answeredCount').innerText = answeredCount;
+    }
+
+    // --- Update top statistic indicators ---
+    function updateTopStats() {
+      let totalAnswered = 0;
+      let totalCorrect = 0;
+      let mistakeCount = 0;
+
+      RAW_QUESTIONS.forEach(q => {
+        const key = `${q[0]}-${q[1]}`;
+        const ans = appState.userAnswers[key];
+        if (ans) {
+          totalAnswered++;
+          if (ans === q[6]) {
+            totalCorrect++;
+          } else {
+            mistakeCount++;
+          }
+        }
+      });
+
+      const accuracy = totalAnswered > 0 ? Math.round((totalCorrect / totalAnswered) * 100) : 0;
+      document.getElementById('accuracyVal').innerText = `${accuracy}%`;
+      document.getElementById('scoreVal').innerText = `${totalCorrect * 2} 分`;
+      document.getElementById('wrongCountVal').innerText = `${mistakeCount} 題`;
+      document.getElementById('mistakeCountText').innerText = mistakeCount;
+    }
+
+    // --- Step navigation ---
+    function nextQuestion() {
+      if (appState.currentIndex < activeQuestions.length - 1) {
+        appState.currentIndex++;
+        renderCurrentQuestion();
+        renderNavigator();
+      }
+    }
+
+    function prevQuestion() {
+      if (appState.currentIndex > 0) {
+        appState.currentIndex--;
+        renderCurrentQuestion();
+        renderNavigator();
+      }
+    }
+
+    function toggleBookmarkCurrent() {
+      const q = activeQuestions[appState.currentIndex];
+      const qKey = `${q[0]}-${q[1]}`;
+      appState.bookmarked[qKey] = !appState.bookmarked[qKey];
+      renderCurrentQuestion();
+      saveState();
+    }
+
+    function resetCurrentSet() {
+      if (confirm("確定要重設當前卷別的所有作答紀錄嗎？")) {
+        activeQuestions.forEach(q => {
+          const qKey = `${q[0]}-${q[1]}`;
+          delete appState.userAnswers[qKey];
+        });
+        appState.examSubmitted = false;
+        applyFilterAndRender();
+        saveState();
+      }
+    }
+
+    function resetAllRecords() {
+      if (confirm("確定要清空所有歷史作答紀錄與標記嗎？")) {
+        appState.userAnswers = {};
+        appState.bookmarked = {};
+        appState.examSubmitted = false;
+        applyFilterAndRender();
+        saveState();
+        returnToQuiz();
+      }
+    }
+
+    function submitExam() {
+      const unAns = activeQuestions.filter(q => !appState.userAnswers[`${q[0]}-${q[1]}`]).length;
+      if (unAns > 0) {
+        if (!confirm(`尚有 ${unAns} 題未作答，確定要現在交卷結算嗎？`)) {
+          return;
+        }
+      }
+      appState.examSubmitted = true;
+      renderCurrentQuestion();
+      renderNavigator();
+      showFinalReport();
+      saveState();
+    }
+
+    // --- Comprehensive Report Modal / View ---
+    function showFinalReport() {
+      let setAnswered = 0;
+      let setCorrect = 0;
+      let vocabCorrect = 0;
+      let vocabTotal = 0;
+      let sentCorrect = 0;
+      let sentTotal = 0;
+      let mistakeCount = 0;
+
+      activeQuestions.forEach(q => {
+        const key = `${q[0]}-${q[1]}`;
+        const ans = appState.userAnswers[key];
+        if (q[2] === 1) vocabTotal++;
+        else sentTotal++;
+
+        if (ans) {
+          setAnswered++;
+          if (ans === q[6]) {
+            setCorrect++;
+            if (q[2] === 1) vocabCorrect++;
+            else sentCorrect++;
+          } else {
+            mistakeCount++;
+          }
+        }
+      });
+
+      const totalScore = activeQuestions.length > 0 ? Math.round((setCorrect / activeQuestions.length) * 100) : 0;
+      const vocabRate = vocabTotal > 0 ? Math.round((vocabCorrect / vocabTotal) * 100) : 0;
+      const sentRate = sentTotal > 0 ? Math.round((sentCorrect / sentTotal) * 100) : 0;
+
+      document.getElementById('finalScoreDisplay').innerText = totalScore;
+      document.getElementById('reportScope').innerText = appState.activeYear === 'all' 
+        ? '全部歷屆 90 題 (110~115 年)' 
+        : `${appState.activeYear} 年度篩選測驗閱讀卷`;
+      document.getElementById('reportAccuracy').innerText = `${setCorrect} / ${activeQuestions.length} (${totalScore}%)`;
+      document.getElementById('reportVocabRate').innerText = `${vocabCorrect}/${vocabTotal} (${vocabRate}%)`;
+      document.getElementById('reportSentenceRate').innerText = `${sentCorrect}/${sentTotal} (${sentRate}%)`;
+      document.getElementById('reportWrongCount').innerText = mistakeCount;
+
+      const feedbackEl = document.getElementById('finalFeedbackNote');
+      if (totalScore >= 85) {
+        feedbackEl.innerText = "🌟 太棒了！表現非常優異，已完全具備國小五年級核心英語能力！";
+      } else if (totalScore >= 60) {
+        feedbackEl.innerText = "👍 良好通過！建議可針對答錯的題目進行重點複習，鞏固字彙與句型。";
+      } else {
+        feedbackEl.innerText = "💪 仍有進步空間！建議開啟「即時解析模式」並使用「錯題專攻」加強練習！";
+      }
+
+      document.getElementById('mainQuizView').style.display = 'none';
+      document.getElementById('summaryView').style.display = 'flex';
+    }
+
+    function returnToQuiz() {
+      document.getElementById('summaryView').style.display = 'none';
+      document.getElementById('mainQuizView').style.display = 'grid';
+    }
+
+    function reviewWrongFromReport() {
+      returnToQuiz();
+      showMistakesOnly();
+    }
+
+    // Launch
+    window.addEventListener('DOMContentLoaded', initApp);
+  </script>
+</body>
+</html>
